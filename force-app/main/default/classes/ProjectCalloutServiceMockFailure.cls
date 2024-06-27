@@ -1,3 +1,10 @@
-public class ProjectCalloutServiceMockFailure {
-   //Implement http mock callout failure here 
+@isTest
+public class ProjectCalloutServiceMockFailure implements HttpCalloutMock {
+   public HTTPResponse respond(HTTPRequest request) {
+       HttpResponse response = new HttpResponse();
+       response.setHeader('Content-Type', 'application/json');
+       response.setBody('{"error":"Invalid name"}');
+       response.setStatusCode(500);
+       return response;
+   }
 }
